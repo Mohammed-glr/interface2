@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@100..900&family=Madimi+One&display=swap');
+
+/* Main container styles */
+.scenario-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  transition: opacity 1000ms ease-in-out;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.scenario-container.transitioning {
+  opacity: 0;
+}
+
+.scenario-container.visible {
+  opacity: 1;
+}
+
+/* Dynamic background handling
+.scenario-container[data-background*="FirstScenarioBg.PNG"] {
+  background-image: url('/imgs/FirstScenarioBg.PNG');
+}
+
+.scenario-container[data-background*="SecondScenarioBg.PNG"] {
+  background-image: url('/imgs/SecondScenarioBg.PNG');
+}
+
+.scenario-container[data-background*="ThirdScenarioBg.PNG"] {
+  background-image: url('/imgs/ThirdScenarioBg.PNG');
+}
+
+.scenario-container[data-background*="ForthScenraioBg.PNG"] {
+  background-image: url('/imgs/ForthScenraioBg.PNG');
+} */
+
+/* Content container */
+.content-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+}
+
+/* Story content area */
+.story-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* Main title */
+.story-title {
+  font-size: 2.25rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.15));
+  font-family: 'Gluten', sans-serif;
+}
+
+/* Content box */
+.content-box {
+  background-color: rgb(0, 0, 0);
+  opacity: 0.6;
+  border-radius: 0.5rem;
+  padding: 1.5rem 2rem;
+  max-width: 90vw;
+}
+
+/* Content text */
+.content-text {
+  font-size: 1.125rem;
+  color: rgb(255, 255, 255);
+  line-height: 1.625;
+  font-family: 'Madimi One', cursive;
+}
+
+/* Debug info */
+.debug-info {
+  color: white;
+  font-size: 0.875rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  width: fit-content;
+  align-self: flex-end;
+}
+
+/* Media queries for responsive design */
+@media (min-width: 768px) {
+  .story-title {
+    font-size: 3.75rem;
+  }
+  
+  .content-box {
+    padding: 2rem;
+  }
+  
+  .content-text {
+    font-size: 1.25rem;
+  }
+}
+
+/* Legacy App styles */
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
