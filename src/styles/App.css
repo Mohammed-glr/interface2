@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Gluten:wght@100..900&family=Madimi+One&display=swap');
 
-/* Main container styles */
 .scenario-container {
   position: fixed;
   top: 0;
@@ -23,24 +22,8 @@
   opacity: 1;
 }
 
-/* Dynamic background handling
-.scenario-container[data-background*="FirstScenarioBg.PNG"] {
-  background-image: url('/imgs/FirstScenarioBg.PNG');
-}
 
-.scenario-container[data-background*="SecondScenarioBg.PNG"] {
-  background-image: url('/imgs/SecondScenarioBg.PNG');
-}
 
-.scenario-container[data-background*="ThirdScenarioBg.PNG"] {
-  background-image: url('/imgs/ThirdScenarioBg.PNG');
-}
-
-.scenario-container[data-background*="ForthScenraioBg.PNG"] {
-  background-image: url('/imgs/ForthScenraioBg.PNG');
-} */
-
-/* Content container */
 .content-container {
   position: absolute;
   top: 0;
@@ -53,7 +36,6 @@
   padding: 1.5rem;
 }
 
-/* Story content area */
 .story-content {
   flex: 1;
   display: flex;
@@ -64,7 +46,6 @@
   margin: 0 auto;
 }
 
-/* Main title */
 .story-title {
   font-size: 2.25rem;
   font-weight: bold;
@@ -74,7 +55,6 @@
   font-family: 'Gluten', sans-serif;
 }
 
-/* Content box */
 .content-box {
   background-color: rgb(0, 0, 0);
   opacity: 0.6;
@@ -83,7 +63,6 @@
   max-width: 90vw;
 }
 
-/* Content text */
 .content-text {
   font-size: 1.125rem;
   color: rgb(255, 255, 255);
@@ -91,7 +70,6 @@
   font-family: 'Madimi One', cursive;
 }
 
-/* Debug info */
 .debug-info {
   color: white;
   font-size: 0.875rem;

@@ -48,7 +48,9 @@ function App() {
   return (
     <div 
       className={`scenario-container ${isTransitioning ? 'transitioning' : 'visible'}`}
-      data-background={currentScenario.backgroundScenarioPath}
+      style={{
+        backgroundImage: `url(${currentScenario.backgroundScenarioPath})`
+      }}
     >
       <div className="content-container">
         <div className="story-content">
