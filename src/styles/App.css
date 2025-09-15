@@ -56,6 +56,7 @@
     0 8px 32px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.1),
     0 0 0 1px rgba(255, 215, 0, 0.2);
+  animation: magicalPulse 4s ease-in-out infinite;
 }
 
 .scenario-header::before {
@@ -68,6 +69,15 @@
   background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(255, 179, 71, 0.05));
   border-radius: 18px;
   pointer-events: none;
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 215, 0, 0.08), 
+    rgba(255, 179, 71, 0.05),
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 215, 0, 0.08)
+  );
+  background-size: 300% 300%;
+  animation: mysticalShimmer 6s ease-in-out infinite;
 }
 
 .scenario-title {
@@ -83,6 +93,14 @@
   animation: titleGlow 2s ease-in-out infinite alternate;
   position: relative;
   z-index: 1;
+}
+
+.scenario-title::after {
+  content: '✨';
+  display: inline-block;
+  margin-left: 1rem;
+  animation: sparkleTrail 3s ease-in-out infinite;
+  font-size: 0.8em;
 }
 
 @keyframes titleGlow {
@@ -131,6 +149,7 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.1),
     0 0 0 1px rgba(255, 255, 255, 0.05);
   position: relative;
+  animation: magicalPulse 4s ease-in-out infinite;
 }
 
 .content-box::before {
@@ -143,6 +162,15 @@
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 215, 0, 0.03));
   border-radius: 18px;
   pointer-events: none;
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 215, 0, 0.08), 
+    rgba(255, 179, 71, 0.05),
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 215, 0, 0.08)
+  );
+  background-size: 300% 300%;
+  animation: mysticalShimmer 6s ease-in-out infinite;
 }
 
 .content-text {
@@ -203,6 +231,7 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.1),
     0 0 0 1px rgba(255, 215, 0, 0.2);
   position: relative;
+  animation: magicalPulse 4s ease-in-out infinite;
 }
 
 .narrator-box::before {
@@ -215,6 +244,15 @@
   background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 179, 71, 0.05));
   border-radius: 18px;
   pointer-events: none;
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 215, 0, 0.08), 
+    rgba(255, 179, 71, 0.05),
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 215, 0, 0.08)
+  );
+  background-size: 300% 300%;
+  animation: mysticalShimmer 6s ease-in-out infinite;
 }
 
 .narrator-text {
@@ -250,6 +288,7 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.15),
     0 0 0 1px rgba(255, 255, 255, 0.1);
   position: relative;
+  animation: magicalPulse 4s ease-in-out infinite;
 }
 
 .special-dialogue-box::before {
@@ -262,6 +301,15 @@
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 215, 0, 0.05));
   border-radius: 18px;
   pointer-events: none;
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 215, 0, 0.08), 
+    rgba(255, 179, 71, 0.05),
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 215, 0, 0.08)
+  );
+  background-size: 300% 300%;
+  animation: mysticalShimmer 6s ease-in-out infinite;
 }
 
 .speaker-name {
@@ -304,6 +352,8 @@
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: gentleBreathe 6s ease-in-out infinite;
+  animation-delay: 2s;
 }
 
 .dialogue-progress {
@@ -333,6 +383,12 @@
   transition: width 0.5s ease;
   border-radius: 3px;
   box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+  background: linear-gradient(90deg, #ffd700, #ffb347, #ffd700, #ff6b35);
+  background-size: 200% 100%;
+  animation: magicalBorderFlow 3s ease-in-out infinite;
+  box-shadow: 
+    0 0 10px rgba(255, 215, 0, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
 }
 
 .dialogue-buttons {
@@ -371,6 +427,22 @@
 
 .dialogue-btn:hover::before {
   opacity: 1;
+}
+
+.dialogue-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  animation: mysticalShimmer 4s ease-in-out infinite;
 }
 
 .next-btn {
@@ -429,6 +501,226 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes magicalPulse {
+  0%, 100% { 
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      0 0 0 1px rgba(255, 215, 0, 0.2),
+      0 0 20px rgba(255, 215, 0, 0.1);
+  }
+  50% { 
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      0 0 0 1px rgba(255, 215, 0, 0.4),
+      0 0 40px rgba(255, 215, 0, 0.3);
+  }
+}
+
+@keyframes floatingOrbs {
+  0%, 100% { 
+    transform: translateY(0px) translateX(0px) rotate(0deg); 
+    opacity: 0.6;
+  }
+  33% { 
+    transform: translateY(-20px) translateX(10px) rotate(120deg); 
+    opacity: 0.8;
+  }
+  66% { 
+    transform: translateY(-10px) translateX(-15px) rotate(240deg); 
+    opacity: 0.4;
+  }
+}
+
+@keyframes mysticalShimmer {
+  0% { 
+    background-position: -200px 0; 
+  }
+  100% { 
+    background-position: 200px 0; 
+  }
+}
+
+@keyframes gentleBreathe {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg); 
+  }
+  50% { 
+    transform: scale(1.02) rotate(0.5deg); 
+  }
+}
+
+@keyframes sparkleTrail {
+  0% { 
+    opacity: 0; 
+    transform: scale(0) rotate(0deg); 
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1) rotate(180deg); 
+  }
+  100% { 
+    opacity: 0; 
+    transform: scale(0) rotate(360deg); 
+  }
+}
+
+@keyframes magicalBorderFlow {
+  0% { 
+    background-position: 0% 50%; 
+  }
+  50% { 
+    background-position: 100% 50%; 
+  }
+  100% { 
+    background-position: 0% 50%; 
+  }
+}
+
+/* Floating Magical Elements */
+.magical-orbs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.magical-orb {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.8), rgba(255, 179, 71, 0.4), transparent);
+  border-radius: 50%;
+  animation: floatingOrbs 8s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.magical-orb:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; animation-duration: 12s; }
+.magical-orb:nth-child(2) { top: 20%; right: 20%; animation-delay: 2s; animation-duration: 10s; }
+.magical-orb:nth-child(3) { bottom: 30%; left: 10%; animation-delay: 4s; animation-duration: 14s; }
+.magical-orb:nth-child(4) { bottom: 15%; right: 15%; animation-delay: 6s; animation-duration: 11s; }
+.magical-orb:nth-child(5) { top: 50%; left: 5%; animation-delay: 8s; animation-duration: 13s; }
+.magical-orb:nth-child(6) { top: 60%; right: 8%; animation-delay: 10s; animation-duration: 9s; }
+
+/* Enhanced Glass Effects with Animation */
+.narrator-box, .special-dialogue-box, .scenario-header, .content-box {
+  animation: magicalPulse 4s ease-in-out infinite;
+}
+
+.narrator-box::before, .special-dialogue-box::before, .scenario-header::before, .content-box::before {
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 215, 0, 0.08), 
+    rgba(255, 179, 71, 0.05),
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 215, 0, 0.08)
+  );
+  background-size: 300% 300%;
+  animation: mysticalShimmer 6s ease-in-out infinite;
+}
+
+/* Character Enhancements */
+.character-container {
+  animation: gentleBreathe 5s ease-in-out infinite;
+}
+
+.character-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.character-image::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 215, 0, 0.1) 50%,
+    transparent 70%
+  );
+  animation: mysticalShimmer 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Progress Bar Enhancements */
+.progress-fill {
+  background: linear-gradient(90deg, #ffd700, #ffb347, #ffd700, #ff6b35);
+  background-size: 200% 100%;
+  animation: magicalBorderFlow 3s ease-in-out infinite;
+  box-shadow: 
+    0 0 10px rgba(255, 215, 0, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+/* Title Enhancements */
+.scenario-title::after {
+  content: '✨';
+  display: inline-block;
+  margin-left: 1rem;
+  animation: sparkleTrail 3s ease-in-out infinite;
+  font-size: 0.8em;
+}
+
+/* Button Enhancements */
+.dialogue-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.dialogue-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  animation: mysticalShimmer 4s ease-in-out infinite;
+}
+
+/* Dialogue Controls Enhancement */
+.dialogue-controls {
+  animation: gentleBreathe 6s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+/* Fantasy Nameplate Enhancements */
+.character-nameplate {
+  position: relative;
+  overflow: hidden;
+}
+
+.character-nameplate::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 40%,
+    rgba(255, 215, 0, 0.1) 50%,
+    transparent 60%
+  );
+  animation: mysticalShimmer 7s ease-in-out infinite;
+  pointer-events: none;
 }
 
 /* Responsive Design */

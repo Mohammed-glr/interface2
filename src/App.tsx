@@ -6,6 +6,16 @@ import { storyData } from './data/storyData';
 import CharacterIntro from './components/CharacterIntro';
 import DialogueManager from './components/DialogueManager';
 
+const MagicalOrbs = () => {
+  return (
+    <div className="magical-orbs">
+      {[...Array(6)].map((_, index) => (
+        <div key={index} className="magical-orb" />
+      ))}
+    </div>
+  );
+};
+
 function App() {
   const [showIntro, setShowIntro] = useState(true);
   const [currentScenarioIndex, setCurrentScenarioIndex] = useState(0);
@@ -21,7 +31,7 @@ function App() {
       const introTimer = setTimeout(() => {
         setShowIntro(false);
         setShowDialogue(true);
-      }, 8000); // Increased intro time
+      }, 8000); 
 
       return () => clearTimeout(introTimer);
     }
@@ -51,7 +61,12 @@ function App() {
   };
 
   if (showIntro) {
-    return <CharacterIntro />;
+    return (
+      <>
+        <MagicalOrbs />
+        <CharacterIntro />
+      </>
+    );
   }
 
   return (
@@ -61,6 +76,7 @@ function App() {
         backgroundImage: `url(${currentScenario.backgroundScenarioPath})`
       }}
     >
+      <MagicalOrbs />
       <div className="content-container">
         {/* Fixed Header for Scenario Title */}
         <div className="scenario-header">
