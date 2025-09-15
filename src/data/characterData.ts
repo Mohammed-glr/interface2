@@ -4,7 +4,6 @@ export const characterData = [
   { id: 3, CharacterName: 'Amir', characterImagePath: '/imgs/Amir.png' },
 ];
 
-// Character scripts for each scenario
 export const scenarioScripts = [
   {
     scenarioId: 1,

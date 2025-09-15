@@ -4,11 +4,13 @@ import { scenarioData } from './data/scenarioData';
 import { characterData } from './data/characterData';
 import { storyData } from './data/storyData';
 import CharacterIntro from './components/CharacterIntro';
+import DialogueManager from './components/DialogueManager';
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);
   const [currentScenarioIndex, setCurrentScenarioIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [showDialogue, setShowDialogue] = useState(false);
   
 
   const currentScenario = scenarioData[currentScenarioIndex];
@@ -18,14 +20,15 @@ function App() {
     if (showIntro) {
       const introTimer = setTimeout(() => {
         setShowIntro(false);
-      }, 6000); 
+        setShowDialogue(true);
+      }, 8000); // Increased intro time
 
       return () => clearTimeout(introTimer);
     }
   }, [showIntro]);
 
   useEffect(() => {
-    if (!showIntro) {
+    if (!showIntro && !showDialogue) {
       const timer = setTimeout(() => {
         setIsTransitioning(true);
         
@@ -34,21 +37,21 @@ function App() {
             return prevIndex < scenarioData.length - 1 ? prevIndex + 1 : 0;
           });
           setIsTransitioning(false);
-        }, 500); 
+          setShowDialogue(true);
+        }, 800);
         
-      }, scenarioData[currentScenarioIndex].ScenarioDuration * 1000);
+      }, 3000); 
 
       return () => clearTimeout(timer);
     }
-  }, [currentScenarioIndex, showIntro]);
+  }, [currentScenarioIndex, showIntro, showDialogue]);
+
+  const handleDialogueComplete = () => {
+    setShowDialogue(false);
+  };
 
   if (showIntro) {
     return <CharacterIntro />;
-  }
-
-  const ScenarioOne = scenarioData[0];
-  if (currentScenario.id === ScenarioOne.id) {
-    
   }
 
   return (
@@ -59,19 +62,33 @@ function App() {
       }}
     >
       <div className="content-container">
-        <div className="story-content">
-          <h1 className="story-title">
+        {/* Fixed Header for Scenario Title */}
+        <div className="scenario-header">
+          <h1 className="scenario-title">
             {currentStory?.title || currentScenario.ScenarioName}
           </h1>
-          <div className="content-box">
-            <p className="content-text">
-              {currentStory?.content || currentScenario.description}
-            </p>
-          </div>
         </div>
 
-        <div className="debug-info">
-          Scenario {currentScenarioIndex + 1}/{scenarioData.length} | ID: {currentScenario.scenarioID}
+        {/* Main Content Area */}
+        <div className="main-content">
+          {!showDialogue && (
+            <div className="story-description">
+              <div className="content-box">
+                <p className="content-text">
+                  {currentStory?.content || currentScenario.description}
+                </p>
+              </div>
+            </div>
+          )}
+          
+          {showDialogue && (
+            <DialogueManager
+              scenarioId={currentScenario.scenarioID}
+              onDialogueComplete={handleDialogueComplete}
+              autoAdvance={true}
+              dialogueSpeed={5000} 
+            />
+          )}
         </div>
       </div>
     </div>
@@ -79,3 +96,7 @@ function App() {
 }
 
 export default App;
+
+
+
+
