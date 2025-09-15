@@ -52,7 +52,7 @@ export const scenarioData = [
   { 
     id: 6, 
     ScenarioName: 'The Pirate Escape', 
-    backgroundScenarioPath: '/imgs/SecondScenarioBg.PNG', 
+    backgroundScenarioPath: '/imgs/SixthScenarioBg.png', 
     ScenarioDuration: 5, 
     scenarioID: 6,
     description: 'The kids tumble into a pirate ship world and must outsmart the crew',
@@ -62,7 +62,7 @@ export const scenarioData = [
   { 
     id: 7, 
     ScenarioName: 'The Riddle of the Ancient Temple', 
-    backgroundScenarioPath: '/imgs/ThirdScenarioBg.PNG', 
+    backgroundScenarioPath: '/imgs/SeventhScenarioBg.png', 
     ScenarioDuration: 5, 
     scenarioID: 7,
     description: 'In a desert temple, Amir deciphers glowing runes to open the path forward',
@@ -72,7 +72,7 @@ export const scenarioData = [
   { 
     id: 8, 
     ScenarioName: 'The Lonely Dragon', 
-    backgroundScenarioPath: '/imgs/ForthScenraioBg.PNG', 
+    backgroundScenarioPath: '/imgs/EighthScenarioBg.png', 
     ScenarioDuration: 5, 
     scenarioID: 8,
     description: 'In a misty cave, they meet a kind dragon who gives them a key piece of the puzzle',
@@ -82,7 +82,7 @@ export const scenarioData = [
   { 
     id: 9, 
     ScenarioName: 'The Race Against Time', 
-    backgroundScenarioPath: '/imgs/FirstScenarioBg.PNG', 
+    backgroundScenarioPath: '/imgs/NinthScenarioBg.png', 
     ScenarioDuration: 5, 
     scenarioID: 9,
     description: 'Back in the forest, the hourglass is almost empty and they must solve the final riddle',
@@ -92,7 +92,7 @@ export const scenarioData = [
   { 
     id: 10, 
     ScenarioName: 'The Portal of Stories', 
-    backgroundScenarioPath: '/imgs/SecondScenarioBg.PNG', 
+    backgroundScenarioPath: '/imgs/TenthScenarioBg.png', 
     ScenarioDuration: 5, 
     scenarioID: 10,
     description: 'A giant book portal appears and they escape just as dawn breaks',

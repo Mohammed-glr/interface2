@@ -9,6 +9,7 @@ function App() {
   const [showIntro, setShowIntro] = useState(true);
   const [currentScenarioIndex, setCurrentScenarioIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  
 
   const currentScenario = scenarioData[currentScenarioIndex];
   const currentStory = storyData.find(story => story.scenarioID === currentScenario.scenarioID);
@@ -17,7 +18,7 @@ function App() {
     if (showIntro) {
       const introTimer = setTimeout(() => {
         setShowIntro(false);
-      }, 60000); 
+      }, 6000); 
 
       return () => clearTimeout(introTimer);
     }
@@ -43,6 +44,11 @@ function App() {
 
   if (showIntro) {
     return <CharacterIntro />;
+  }
+
+  const ScenarioOne = scenarioData[0];
+  if (currentScenario.id === ScenarioOne.id) {
+    
   }
 
   return (

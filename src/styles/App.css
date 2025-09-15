@@ -80,7 +80,6 @@
   align-self: flex-end;
 }
 
-/* Media queries for responsive design */
 @media (min-width: 768px) {
   .story-title {
     font-size: 3.75rem;
@@ -95,7 +94,6 @@
   }
 }
 
-/* Legacy App styles */
 .App {
   text-align: center;
 }
