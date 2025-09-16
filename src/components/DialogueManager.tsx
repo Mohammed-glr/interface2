@@ -14,13 +14,15 @@ interface DialogueManagerProps {
   onDialogueComplete?: () => void;
   autoAdvance?: boolean;
   dialogueSpeed?: number;
+  renderSpeakerIndicator?: (speaker: string) => React.ReactNode;
 }
 
 const DialogueManager: React.FC<DialogueManagerProps> = ({ 
   scenarioId, 
   onDialogueComplete,
   autoAdvance = true,
-  dialogueSpeed = 3000 
+  dialogueSpeed = 3000,
+  renderSpeakerIndicator
 }) => {
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [isDialogueActive, setIsDialogueActive] = useState(false);
@@ -109,6 +111,9 @@ const DialogueManager: React.FC<DialogueManagerProps> = ({
           </div>
         )}
       </div>
+
+      {/* Speaker Indicator */}
+      {renderSpeakerIndicator && renderSpeakerIndicator(currentLine.speaker)}
 
       {isNarrator && (
         <div className="narrator-container">

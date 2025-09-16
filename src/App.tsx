@@ -28,6 +28,62 @@ const GLRLogo = () => {
   );
 };
 
+const SpeakerIndicator = ({ speakerName, characterImage }: { speakerName: string; characterImage?: string }) => {
+  if (!speakerName || speakerName === 'narrator' || speakerName === 'narratorClosing') {
+    return null;
+  }
+
+  const getCharacterImage = (speaker: string) => {
+    switch (speaker.toLowerCase()) {
+      case 'sam': return '/imgs/Sam.png';
+      case 'lena': return '/imgs/Lena.png';
+      case 'amir': return '/imgs/Amir.png';
+      default: return characterImage || '/imgs/default-character.png';
+    }
+  };
+
+  const getDisplayName = (speaker: string) => {
+    switch (speaker.toLowerCase()) {
+      case 'sam': return 'Sam';
+      case 'lena': return 'Lena';
+      case 'amir': return 'Amir';
+      case 'raven': return 'Raven';
+      case 'piratecaptain': return 'Pirate Captain';
+      case 'dragon': return 'Dragon';
+      case 'templevoice': return 'Temple Voice';
+      case 'treewhisper': return 'Tree Whisper';
+      case 'dragongift': return 'Dragon Gift';
+      default: return speaker;
+    }
+  };
+
+  return (
+    <div className="speaker-indicator">
+      {(speakerName === 'sam' || speakerName === 'lena' || speakerName === 'amir') && (
+        <img 
+          src={getCharacterImage(speakerName)} 
+          alt={getDisplayName(speakerName)} 
+          className="speaker-portrait"
+        />
+      )}
+      <span className="speaker-label">{getDisplayName(speakerName)}</span>
+    </div>
+  );
+}
+
+const ScenarioIndicator = ({ currentScenario, totalScenarios }: { currentScenario: number; totalScenarios: number }) => {
+  return (
+    <div className="scenario-indicator">
+      <div className="scenario-number">
+        <span className="current-scenario">{currentScenario}</span>
+        <span className="scenario-divider">/</span>
+        <span className="total-scenarios">{totalScenarios}</span>
+      </div>
+      <span className="scenario-label">Scenario</span>
+    </div>
+  );
+}
+
 function App() {
   const [showIntro, setShowIntro] = useState(true);
   const [currentScenarioIndex, setCurrentScenarioIndex] = useState(0);
@@ -93,6 +149,10 @@ function App() {
       <GLRLogo />
       <div className="content-container">
         <div className="scenario-header">
+          <ScenarioIndicator 
+            currentScenario={currentScenarioIndex + 1} 
+            totalScenarios={scenarioData.length}
+          />
           <h1 className="scenario-title">
             {currentStory?.title || currentScenario.ScenarioName}
           </h1>
@@ -109,12 +169,17 @@ function App() {
           )}
           
           {showDialogue && (
-            <DialogueManager
-              scenarioId={currentScenario.scenarioID}
-              onDialogueComplete={handleDialogueComplete}
-              autoAdvance={true}
-              dialogueSpeed={5000} 
-            />
+            <>
+              <DialogueManager
+                scenarioId={currentScenario.scenarioID}
+                onDialogueComplete={handleDialogueComplete}
+                autoAdvance={true}
+                dialogueSpeed={5000} 
+                renderSpeakerIndicator={(speaker: string) => (
+                  <SpeakerIndicator speakerName={speaker} />
+                )}
+              />
+            </>
           )}
         </div>
       </div>
