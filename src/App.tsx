@@ -16,6 +16,18 @@ const MagicalOrbs = () => {
   );
 };
 
+const GLRLogo = () => {
+  return (
+    <div className="glr-logo-container">
+      <img 
+        src="/imgs/GLR-creative-software-developer.svg" 
+        alt="GLR Creative Software Developer" 
+        className="glr-logo"
+      />
+    </div>
+  );
+};
+
 function App() {
   const [showIntro, setShowIntro] = useState(true);
   const [currentScenarioIndex, setCurrentScenarioIndex] = useState(0);
@@ -64,6 +76,7 @@ function App() {
     return (
       <>
         <MagicalOrbs />
+        <GLRLogo />
         <CharacterIntro />
       </>
     );
@@ -77,6 +90,7 @@ function App() {
       }}
     >
       <MagicalOrbs />
+      <GLRLogo />
       <div className="content-container">
         {/* Fixed Header for Scenario Title */}
         <div className="scenario-header">

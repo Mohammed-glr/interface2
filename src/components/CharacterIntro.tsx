@@ -10,9 +10,9 @@ interface CharacterData {
 }
 
 const characterDescriptions: { [key: string]: string } = {
-  'Lena': 'The Brave Warrior',
-  'Sam': 'The Wise Scholar',
-  'Amir': 'The Swift Ranger'
+  'Lena': 'De Dappere Krijger',
+  'Sam': 'De Slimme Geleerde',
+  'Amir': 'De Snelle Verkenner'
 };
 
 export default function CharacterIntro() {
@@ -21,9 +21,9 @@ export default function CharacterIntro() {
                 <div className="character-intro-container fantasy-theme">
                     {/** backround */}
                     <div className="intro-header">
-                        <h1 className="intro-title fantasy-title">Behold Our Noble Heroes</h1>
+                        <h1 className="intro-title fantasy-title">Ontmoet Onze Avonturiers!</h1>
                         <div className="title-underline"></div>
-                        <p className="intro-subtitle fantasy-subtitle">Brave souls who shall guide thee through this ancient tale</p>
+                        <p className="intro-subtitle fantasy-subtitle">Dappere vrienden die je meenemen op een magisch avontuur</p>
                     </div>
                     
                     <div className="characters-showcase">
@@ -38,7 +38,7 @@ export default function CharacterIntro() {
                                 <div className="character-nameplate">
                                     <h3 className="character-name">{character.CharacterName}</h3>
                                     <p className="character-title">
-                                        {characterDescriptions[character.CharacterName] || 'The Adventurer'}
+                                        {characterDescriptions[character.CharacterName] || 'De Avonturier'}
                                     </p>
                                 </div>
                             </div>

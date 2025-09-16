@@ -44,6 +44,7 @@
 .scenario-header {
   position: relative;
   z-index: 20;
+  width: fit-content;
   text-align: center;
   margin-bottom: 2rem;
   padding: 1.5rem 2rem;
@@ -795,5 +796,54 @@
   .dialogue-btn {
     padding: 0.7rem 1.2rem;
     font-size: 0.9rem;
+  }
+}
+
+/* GLR Logo Styles */
+.glr-logo-container {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  opacity: 0.8;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.glr-logo-container:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.glr-logo {
+  height: 60px;
+  width: auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  transition: filter 0.3s ease-in-out;
+}
+
+.glr-logo:hover {
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4)) brightness(1.1);
+}
+
+/* Responsive logo sizing */
+@media (max-width: 768px) {
+  .glr-logo-container {
+    top: 1.5rem;
+    right: 1.5rem;
+  }
+  
+  .glr-logo {
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .glr-logo-container {
+    top: 1rem;
+    right: 1rem;
+  }
+  
+  .glr-logo {
+    height: 40px;
   }
 }

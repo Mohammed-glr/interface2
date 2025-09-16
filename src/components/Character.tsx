@@ -30,7 +30,7 @@ const Character: React.FC<CharacterProps> = ({
   if (!character) {
     return (
       <div className="character-error">
-        <p>Character '{characterName}' not found</p>
+        <p>Karakter '{characterName}' niet gevonden</p>
       </div>
     );
   }
@@ -93,7 +93,7 @@ const Character: React.FC<CharacterProps> = ({
     >
       <motion.img 
         src={character.characterImagePath} 
-        alt={`${character.CharacterName} character`}
+        alt={`${character.CharacterName} karakter`}
         className="character-image"
         draggable="false"
         loading="lazy"
