@@ -20,8 +20,8 @@ const GLRLogo = () => {
   return (
     <div className="glr-logo-container">
       <img 
-        src="/imgs/GLR-creative-software-developer.svg" 
-        alt="GLR Creative Software Developer" 
+        src="/imgs/GLR.svg" 
+        alt="GLR Logo" 
         className="glr-logo"
       />
     </div>
@@ -92,14 +92,11 @@ function App() {
       <MagicalOrbs />
       <GLRLogo />
       <div className="content-container">
-        {/* Fixed Header for Scenario Title */}
         <div className="scenario-header">
           <h1 className="scenario-title">
             {currentStory?.title || currentScenario.ScenarioName}
           </h1>
         </div>
-
-        {/* Main Content Area */}
         <div className="main-content">
           {!showDialogue && (
             <div className="story-description">
