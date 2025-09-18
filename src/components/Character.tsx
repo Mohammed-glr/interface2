@@ -125,10 +125,7 @@ const Character: React.FC<CharacterProps> = ({
         initial="initial"
         animate="animate"
         exit="exit"
-        whileHover={{ 
-          scale: 1.05,
-          boxShadow: "0 10px 30px rgba(0,0,0,0.2)"
-        }}
+        
       >
         <motion.p 
           className="speech-text"
@@ -148,12 +145,7 @@ const Character: React.FC<CharacterProps> = ({
       initial="initial"
       animate="animate"
       variants={CharacterFloatingEffect}
-      whileHover={{ 
-        scale: 1.08,
-        y: -15,
-        transition: { duration: 0.3 }
-      }}
-      whileTap={{ scale: 0.95 }}
+    
     >
       <motion.img 
         src={character.characterImagePath} 
@@ -162,10 +154,7 @@ const Character: React.FC<CharacterProps> = ({
         draggable="false"
         loading="lazy"
         variants={ImageVariants}
-        whileHover={{ 
-          rotateZ: [0, -5, 5, 0],
-          filter: "brightness(1.1)"
-        }}
+      
         transition={{
           rotateZ: {
             duration: 0.6,

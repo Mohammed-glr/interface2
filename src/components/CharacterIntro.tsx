@@ -113,12 +113,6 @@ export default function CharacterIntro() {
                 key={character.id} 
                 className="character-display fantasy-character-display"
                 variants={itemVariants}
-                whileHover={{ 
-                  scale: 1.05,
-                  y: -10,
-                  transition: { duration: 0.3 }
-                }}
-                whileTap={{ scale: 0.95 }}
               >
                 <motion.div 
                   className="character-portrait-wrapper"
@@ -130,7 +124,6 @@ export default function CharacterIntro() {
                     damping: 15,
                     delay: 1.2 + (index * 0.2)
                   }}
-                  whileHover={{ rotate: [0, -5, 5, 0] }}
                 >
                   <Character 
                     characterName={character.CharacterName}

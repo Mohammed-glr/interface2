@@ -172,7 +172,7 @@ function App() {
       const introTimer = setTimeout(() => {
         setShowIntro(false);
         setShowDialogue(true);
-      }, 8000); 
+      }, 10000); 
 
       return () => clearTimeout(introTimer);
     }

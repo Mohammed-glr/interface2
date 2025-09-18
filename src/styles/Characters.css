@@ -55,8 +55,8 @@
 }
 
 .character-intro-container {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 90vw;
+    margin: 2rem auto;
     padding: 2rem;
     text-align: center;
     border-radius: 12px;
@@ -165,11 +165,11 @@
 }
 
 .character-nameplate {
+    width: 100%;
     text-align: center;
     background: white;
     border: 2px solid #8fe507;
     border-radius: 8px;
-    padding: 1rem;
     margin-top: 1rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -237,15 +237,13 @@
     justify-content: center;
     align-items: flex-start;
     gap: 3rem;
-    padding: 1.5rem;
     flex-wrap: nowrap;
-    max-width: 900px;
     margin: 0 auto;
 }
 
 .fantasy-character-display .character-image {
-    width: 120px;
-    height: 150px;
+    width: 20rem;
+    height: 35rem;
     max-width: none;
     object-fit: cover;
     border: 2px solid #8fe507;
