@@ -1,6 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { scenarioScripts } from '../data/characterData';
+import { 
+  scenarioScripts, 
+  getCharacterAudio, 
+  hasCharacterAudio, 
+  getLineDuration, 
+  calculateAutoAdvanceDelay 
+} from '../data/characterData';
 import Character from './Character';
 import '../styles/App.css';
 
@@ -8,6 +14,7 @@ interface DialogueLine {
   speaker: string;
   line: string;
   isCharacter: boolean;
+  duration: number; // in seconds
 }
 
 interface DialogueManagerProps {
@@ -22,13 +29,16 @@ const DialogueManager: React.FC<DialogueManagerProps> = ({
   scenarioId, 
   onDialogueComplete,
   autoAdvance = true,
-  dialogueSpeed = 3000,
+  dialogueSpeed = 3000, // This is now used as fallback only
   renderSpeakerIndicator
 }: DialogueManagerProps) => {
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [isDialogueActive, setIsDialogueActive] = useState(false);
   const [dialogueLines, setDialogueLines] = useState<DialogueLine[]>([]);
   const [isComplete, setIsComplete] = useState(false);
+  const [timeRemaining, setTimeRemaining] = useState(0);
+  const currentAudioRef = useRef<HTMLAudioElement | null>(null);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   const getDialogueLines = (scenarioId: number): DialogueLine[] => {
     const scenario = scenarioScripts.find(s => s.scenarioId === scenarioId);
@@ -44,13 +54,52 @@ const DialogueManager: React.FC<DialogueManagerProps> = ({
         lines.push({
           speaker,
           line: scripts[speaker as keyof typeof scripts] as string,
-          isCharacter: ['sam', 'lena', 'amir'].includes(speaker)
+          isCharacter: ['sam', 'lena', 'amir'].includes(speaker),
+          duration: getLineDuration(speaker, scenarioId)
         });
       }
     });
 
     return lines;
   };
+
+  const playAudioForLine = async (speaker: string, scenarioId: number) => {
+    try {
+      if (currentAudioRef.current) {
+        currentAudioRef.current.pause();
+        currentAudioRef.current.currentTime = 0;
+      }
+
+      const audioPath = getCharacterAudio(speaker, scenarioId);
+      
+      if (audioPath) {
+        const audio = new Audio(audioPath);
+        currentAudioRef.current = audio;
+        
+        audio.addEventListener('canplaythrough', () => {
+          console.log(`Audio loaded for ${speaker} in scenario ${scenarioId}`);
+        });
+        
+        audio.addEventListener('ended', () => {
+          currentAudioRef.current = null;
+        });
+        
+        audio.addEventListener('error', () => {
+          console.error(`Failed to load audio file: ${audioPath}`);
+          currentAudioRef.current = null;
+        });
+        
+        await audio.play();
+      } else {
+        console.warn(`No audio found for ${speaker} in scenario ${scenarioId}`);
+      }
+    } catch (error) {
+      console.error(`Failed to play audio for ${speaker} in scenario ${scenarioId}:`, error);
+    }
+  };
+
+
+
 
   useEffect(() => {
     const lines = getDialogueLines(scenarioId);
@@ -61,8 +110,27 @@ const DialogueManager: React.FC<DialogueManagerProps> = ({
   }, [scenarioId]);
 
   useEffect(() => {
+    if (isDialogueActive && dialogueLines.length > 0) {
+      const currentLine = dialogueLines[currentLineIndex];
+      playAudioForLine(currentLine.speaker, scenarioId);
+    }
+  }, [currentLineIndex, isDialogueActive, dialogueLines, scenarioId]);
+
+  useEffect(() => {
     if (isDialogueActive && autoAdvance && dialogueLines.length > 0) {
-      const timer = setTimeout(() => {
+      const currentLine = dialogueLines[currentLineIndex];
+      const delay = calculateAutoAdvanceDelay(currentLine.speaker, scenarioId);
+      
+      setTimeRemaining(delay / 1000);
+      
+      const countdownInterval = setInterval(() => {
+        setTimeRemaining(prev => {
+          const newTime = prev - 0.1;
+          return newTime > 0 ? newTime : 0;
+        });
+      }, 100);
+      
+      const advanceTimer = setTimeout(() => {
         if (currentLineIndex < dialogueLines.length - 1) {
           setCurrentLineIndex((prev: number) => prev + 1);
         } else {
@@ -70,13 +138,27 @@ const DialogueManager: React.FC<DialogueManagerProps> = ({
           setIsComplete(true);
           onDialogueComplete?.();
         }
-      }, dialogueSpeed);
+      }, delay);
 
-      return () => clearTimeout(timer);
+      timerRef.current = advanceTimer;
+
+      return () => {
+        clearInterval(countdownInterval);
+        clearTimeout(advanceTimer);
+        if (timerRef.current) {
+          clearTimeout(timerRef.current);
+          timerRef.current = null;
+        }
+      };
     }
-  }, [currentLineIndex, isDialogueActive, autoAdvance, dialogueSpeed, dialogueLines.length, onDialogueComplete]);
+  }, [currentLineIndex, isDialogueActive, autoAdvance, dialogueLines.length, onDialogueComplete, scenarioId]);
 
   const advanceDialogue = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+    
     if (currentLineIndex < dialogueLines.length - 1) {
       setCurrentLineIndex((prev: number) => prev + 1);
     } else {
@@ -87,10 +169,33 @@ const DialogueManager: React.FC<DialogueManagerProps> = ({
   };
 
   const resetDialogue = () => {
+    if (currentAudioRef.current) {
+      currentAudioRef.current.pause();
+      currentAudioRef.current.currentTime = 0;
+      currentAudioRef.current = null;
+    }
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
     setCurrentLineIndex(0);
     setIsDialogueActive(true);
     setIsComplete(false);
+    setTimeRemaining(0);
   };
+
+  useEffect(() => {
+    return () => {
+      if (currentAudioRef.current) {
+        currentAudioRef.current.pause();
+        currentAudioRef.current = null;
+      }
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+        timerRef.current = null;
+      }
+    };
+  }, []);
 
   if (dialogueLines.length === 0) {
     return null;
@@ -98,6 +203,7 @@ const DialogueManager: React.FC<DialogueManagerProps> = ({
 
   const currentLine = dialogueLines[currentLineIndex];
   const isNarrator = currentLine.speaker === 'narrator' || currentLine.speaker === 'narratorClosing';
+  const hasAudio = hasCharacterAudio(currentLine.speaker, scenarioId);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -326,15 +432,36 @@ const DialogueManager: React.FC<DialogueManagerProps> = ({
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 0.6 }}
       >
-        <motion.span
-          key={currentLineIndex}
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.3 }}
-          className="dialogue-progress-text"
-        >
-          {currentLineIndex + 1} / {dialogueLines.length}
-        </motion.span>
+        <div className="dialogue-progress-info">
+          <motion.span
+            key={currentLineIndex}
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.3 }}
+            className="dialogue-progress-text"
+          >
+            {currentLineIndex + 1} / {dialogueLines.length}
+          </motion.span>
+          {autoAdvance && timeRemaining > 0 && (
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="dialogue-time-remaining"
+            >
+              {Math.ceil(timeRemaining)}s
+            </motion.span>
+          )}
+          {hasAudio && (
+            <motion.span
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="audio-indicator"
+              title="Audio available"
+            >
+              🔊
+            </motion.span>
+          )}
+        </div>
         <div className="dialogue-progress-bar">
           <motion.div
             variants={progressVariants}
@@ -342,6 +469,16 @@ const DialogueManager: React.FC<DialogueManagerProps> = ({
             animate="visible"
             className="dialogue-progress-fill"
           />
+          {autoAdvance && (
+            <motion.div
+              className="dialogue-time-progress"
+              initial={{ width: "100%" }}
+              animate={{ 
+                width: `${(timeRemaining / (currentLine.duration + 1)) * 100}%` 
+              }}
+              transition={{ duration: 0.1 }}
+            />
+          )}
         </div>
       </motion.div>
     </motion.div>
