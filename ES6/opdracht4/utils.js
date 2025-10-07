@@ -8,13 +8,19 @@ const countCharacters = (str) => str.length;
 const logMessage = (msg) => console.log(msg);
 
 
-export const Utils = {
-    add,
-    subtract,
-    capitalize,
-    reverse,
-    countCharacters,
-    logMessage
+export const mathUtils = {
+  add,
+  subtract
+};
+
+export const stringUtils = {
+  capitalize,
+  reverse,
+  countCharacters
+};
+
+export const logger = {
+  logMessage
 };
 
 
