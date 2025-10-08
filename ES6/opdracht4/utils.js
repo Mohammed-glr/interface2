@@ -22,5 +22,3 @@ export const stringUtils = {
 export const logger = {
   logMessage
 };
-
-
