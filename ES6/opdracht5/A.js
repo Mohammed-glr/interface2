@@ -1,13 +1,20 @@
 
 
-const ENDPOINT = "https://jsonplaceholder.typicode.com/todos/1"
-
-export async function fetchData() {
-    const response = await fetch(ENDPOINT)
-    const data = await response.json()
-    
-    return data
+function rekenUit(num1, num2, callback) {
+    const sum = num1 + num2;
+    return callback(sum);
 }
-console.log("Data fetched from A.js")
-fetchData().then(data => console.log(data));
 
+const verdubbel = (result) => result * 2;
+
+const resultaat = rekenUit(3, 4, verdubbel);
+console.log(resultaat);
+
+
+function wachtEnVoerUit(tijd, callback) {
+    setTimeout(callback, tijd);
+}
+
+wachtEnVoerUit(2000, () => {
+    console.log("Klaar met wachten!");
+});
