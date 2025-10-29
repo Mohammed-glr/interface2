@@ -11,6 +11,7 @@ async function haalPokemonOp() {
             case 200:
                 const data = await response.json();
                 console.log("Naam van Pokémon: " + data.name);
+                console.log(data);
                 break;
             case 404:
                 throw new Error("Pokémon niet gevonden");
