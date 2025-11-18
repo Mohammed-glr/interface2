@@ -5,8 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meme Archive Browser</title>
     <script type="module" src="./scripts/main.js" defer></script>
+    <link rel="stylesheet" href="./style/global.css">
 </head>
 <body>
-    
+    <header>
+        <h1>Meme Archive Browser</h1>
+    </header>
+    <main>
+        <div
+            id="search-container"
+        >
+            <input
+                type="text"
+                id="search-input"
+                placeholder="Search memes..."
+            />
+        </div>
+        <div
+            id="filter-container"
+        >
+            <label for="category-select">Filter by Category:</label>
+            <select id="category-select">
+                <option value="all">All</option>
+                <option value="relationship">Relationship</option>
+                <option value="animal">Animals</option>
+                <option value="reaction">Reaction</option>
+                <option value="humor">Humor</option>
+                <option value="concept">Concept</option>
+                <option value="animation">Animation</option>
+            </select>
+            <label for="year-select">Filter by Year:</label>
+            <select id="year-select">
+                <option value="all">All</option>
+                <option value="2004-2016">2004-2016</option>
+                <option value="2017-2019">2017-2019</option>
+            </select>
+        </div>
+        <div id="meme-container">
+        </div>
+
+    </main> 
 </body>
 </html>
