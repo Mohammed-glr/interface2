@@ -1,13 +1,13 @@
-import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
-
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
-  ];
-}
-
-export default function Home() {
-  return <Welcome />;
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Platform from "../components/models/platforms/Platform";
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route>
+          
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }

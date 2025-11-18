@@ -7,7 +7,7 @@ function Model({ url, scale = 1, position = [0, 0, 0], rotation = [0, 0, 0] }) {
   return <primitive object={scene} scale={scale} position={position} rotation={rotation} />;
 }
 
-const ModelViewer = ({
+const Platform = ({
   modelPath,
   scale = 1,
   position,
@@ -31,4 +31,4 @@ const ModelViewer = ({
   );
 };
 
-export default ModelViewer;
+export default Platform;
