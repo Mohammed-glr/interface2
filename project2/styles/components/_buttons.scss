@@ -1,0 +1,236 @@
+// ==========================================================================
+// Button Components
+// ==========================================================================
+
+@use '../abstracts' as *;
+
+// Base Button Styles
+.btn {
+  @include button-reset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-md;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-base;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+  transition: all $transition-base;
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  // Size Variants
+  &--sm {
+    padding: $spacing-xs $spacing-sm;
+    font-size: $font-size-sm;
+  }
+  
+  &--lg {
+    padding: $spacing-md $spacing-lg;
+    font-size: $font-size-lg;
+  }
+  
+  // Full Width
+  &--block {
+    width: 100%;
+  }
+  
+  // Icon Only
+  &--icon {
+    padding: $spacing-sm;
+    
+    &.btn--sm {
+      padding: $spacing-xs;
+    }
+    
+    &.btn--lg {
+      padding: $spacing-md;
+    }
+  }
+}
+
+// ==========================================================================
+// Variant 1: Solid Button (Filled)
+// ==========================================================================
+
+.btn--solid {
+  // Primary
+  &-primary {
+    background-color: $forest-hunter-green;
+    color: white;
+    border: $border-width-thick solid $forest-hunter-green;
+    
+    &:hover:not(:disabled) {
+      background-color: $forest-sea-green;
+      border-color: $forest-sea-green;
+    }
+    
+    &:active:not(:disabled) {
+      background-color: $forest-pine-teal;
+      border-color: $forest-pine-teal;
+    }
+    
+    &:focus-visible {
+      @include focus-ring($forest-hunter-green);
+    }
+  }
+  
+  // Secondary
+  &-secondary {
+    background-color: $forest-mint-leaf-dark;
+    color: $forest-carbon-black;
+    border: $border-width-thick solid $forest-mint-leaf-dark;
+    
+    &:hover:not(:disabled) {
+      background-color: $forest-mint-leaf;
+      border-color: $forest-mint-leaf;
+    }
+    
+    &:active:not(:disabled) {
+      background-color: $forest-sea-green;
+      border-color: $forest-sea-green;
+      color: white;
+    }
+    
+    &:focus-visible {
+      @include focus-ring($forest-mint-leaf-dark);
+    }
+  }
+  
+  // Accent
+  &-accent {
+    background-color: $forest-celadon;
+    color: $forest-pine-teal;
+    border: $border-width-thick solid $forest-celadon;
+    
+    &:hover:not(:disabled) {
+      background-color: $forest-frosted-mint;
+      border-color: $forest-frosted-mint;
+    }
+    
+    &:active:not(:disabled) {
+      background-color: $forest-celadon-dark;
+      border-color: $forest-celadon-dark;
+    }
+    
+    &:focus-visible {
+      @include focus-ring($forest-celadon);
+    }
+  }
+  
+  // Dark
+  &-dark {
+    background-color: $forest-carbon-black;
+    color: $forest-frosted-mint;
+    border: $border-width-thick solid $forest-carbon-black;
+    
+    &:hover:not(:disabled) {
+      background-color: $forest-pine-teal;
+      border-color: $forest-pine-teal;
+    }
+    
+    &:active:not(:disabled) {
+      background-color: $forest-hunter-green;
+      border-color: $forest-hunter-green;
+    }
+    
+    &:focus-visible {
+      @include focus-ring($forest-carbon-black);
+    }
+  }
+}
+
+// ==========================================================================
+// Variant 2: Outline Button (Ghost)
+// ==========================================================================
+
+.btn--outline {
+  background-color: transparent;
+  
+  // Primary
+  &-primary {
+    color: $forest-hunter-green;
+    border: $border-width-thick solid $forest-hunter-green;
+    
+    &:hover:not(:disabled) {
+      background-color: $forest-hunter-green;
+      color: white;
+    }
+    
+    &:active:not(:disabled) {
+      background-color: $forest-pine-teal;
+      border-color: $forest-pine-teal;
+      color: white;
+    }
+    
+    &:focus-visible {
+      @include focus-ring($forest-hunter-green);
+    }
+  }
+  
+  // Secondary
+  &-secondary {
+    color: $forest-mint-leaf-dark;
+    border: $border-width-thick solid $forest-mint-leaf-dark;
+    
+    &:hover:not(:disabled) {
+      background-color: $forest-mint-leaf-dark;
+      color: $forest-carbon-black;
+    }
+    
+    &:active:not(:disabled) {
+      background-color: $forest-sea-green;
+      border-color: $forest-sea-green;
+      color: white;
+    }
+    
+    &:focus-visible {
+      @include focus-ring($forest-mint-leaf-dark);
+    }
+  }
+  
+  // Accent
+  &-accent {
+    color: $forest-celadon-dark;
+    border: $border-width-thick solid $forest-celadon-dark;
+    
+    &:hover:not(:disabled) {
+      background-color: $forest-celadon-dark;
+      color: $forest-pine-teal;
+    }
+    
+    &:active:not(:disabled) {
+      background-color: $forest-celadon;
+      border-color: $forest-celadon;
+    }
+    
+    &:focus-visible {
+      @include focus-ring($forest-celadon-dark);
+    }
+  }
+  
+  // Dark
+  &-dark {
+    color: $forest-carbon-black;
+    border: $border-width-thick solid $forest-carbon-black;
+    
+    &:hover:not(:disabled) {
+      background-color: $forest-carbon-black;
+      color: $forest-frosted-mint;
+    }
+    
+    &:active:not(:disabled) {
+      background-color: $forest-pine-teal;
+      border-color: $forest-pine-teal;
+    }
+    
+    &:focus-visible {
+      @include focus-ring($forest-carbon-black);
+    }
+  }
+}

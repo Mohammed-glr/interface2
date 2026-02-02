@@ -1,0 +1,36 @@
+// ==========================================================================
+// Functions
+// ==========================================================================
+
+@use 'sass:math';
+@use 'sass:color';
+
+@function rem($pixels, $base: 16) {
+  @return math.div($pixels, $base) * 1rem;
+}
+
+@function em($pixels, $base: 16) {
+  @return math.div($pixels, $base) * 1em;
+}
+
+@function tint($color, $percentage) {
+  @return color.mix(white, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+  @return color.mix(black, $color, $percentage);
+}
+
+@function contrast-color($color) {
+  $luminance: (
+    (color.red($color) * 0.299) +
+    (color.green($color) * 0.587) +
+    (color.blue($color) * 0.114)
+  );
+  
+  @if $luminance > 128 {
+    @return #000302;
+  } @else {
+    @return #ffffff;
+  }
+}

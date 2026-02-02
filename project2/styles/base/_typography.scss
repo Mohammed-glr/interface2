@@ -1,0 +1,102 @@
+// ==========================================================================
+// Typography Base Styles
+// ==========================================================================
+
+@use '../abstracts' as *;
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-base;
+  color: $color-text;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-family-heading;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  color: $forest-pine-teal;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: $spacing-lg;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: $spacing-md;
+}
+
+h3 {
+  font-size: 1.75rem;
+  margin-bottom: $spacing-md;
+}
+
+h4 {
+  font-size: 1.5rem;
+  margin-bottom: $spacing-sm;
+}
+
+h5 {
+  font-size: 1.25rem;
+  margin-bottom: $spacing-sm;
+}
+
+h6 {
+  font-size: 1rem;
+  margin-bottom: $spacing-sm;
+}
+
+p {
+  margin-bottom: $spacing-md;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+a {
+  color: $forest-hunter-green;
+  transition: color $transition-fast;
+  
+  &:hover {
+    color: $forest-sea-green;
+  }
+}
+
+strong,
+b {
+  font-weight: $font-weight-bold;
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+small {
+  font-size: $font-size-sm;
+}
+
+code {
+  font-family: 'Fira Code', 'Consolas', monospace;
+  background-color: $forest-frosted-mint;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $border-radius-sm;
+  font-size: 0.875em;
+}
+
+blockquote {
+  border-left: 4px solid $forest-mint-leaf-dark;
+  padding-left: $spacing-md;
+  margin: $spacing-md 0;
+  font-style: italic;
+  color: $forest-pine-teal;
+}

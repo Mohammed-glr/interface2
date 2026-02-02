@@ -1,0 +1,30 @@
+// ==========================================================================
+// Main SCSS Entry Point
+// ==========================================================================
+// This is the main entry point for all styles.
+// Import order matters for proper cascade.
+// ==========================================================================
+
+// Abstracts (Variables, Functions, Mixins - no output)
+@use 'abstracts';
+
+// Vendors (Third-party styles)
+@use 'vendors';
+
+// Base (Reset, Typography, etc.)
+@use 'base';
+
+// Layout (Grid, Header, Footer, etc.)
+@use 'layout';
+
+// Components (Buttons, Cards, Forms, etc.)
+@use 'components';
+
+// Sections (Hero, Features, etc.)
+@use 'sections';
+
+// Pages (Page-specific styles)
+@use 'pages';
+
+// Themes (Dark mode, Light mode, etc.)
+@use 'themes';

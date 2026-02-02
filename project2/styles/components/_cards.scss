@@ -1,0 +1,352 @@
+// ==========================================================================
+// Card Components
+// ==========================================================================
+
+@use '../abstracts' as *;
+
+// Base Card Styles
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  transition: all $transition-base;
+  
+  // Card Header
+  &__header {
+    padding: $spacing-md $spacing-lg;
+    border-bottom: $border-width solid $forest-celadon;
+  }
+  
+  // Card Title
+  &__title {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    color: $forest-pine-teal;
+    margin: 0;
+  }
+  
+  // Card Subtitle
+  &__subtitle {
+    font-size: $font-size-sm;
+    color: $forest-sea-green;
+    margin-top: $spacing-xs;
+  }
+  
+  // Card Body
+  &__body {
+    padding: $spacing-lg;
+    flex: 1;
+  }
+  
+  // Card Footer
+  &__footer {
+    padding: $spacing-md $spacing-lg;
+    border-top: $border-width solid $forest-celadon;
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+  
+  // Card Image
+  &__image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    
+    &--top {
+      border-radius: $border-radius-lg $border-radius-lg 0 0;
+    }
+    
+    &--bottom {
+      border-radius: 0 0 $border-radius-lg $border-radius-lg;
+    }
+  }
+  
+  // Card Actions
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    margin-top: $spacing-md;
+  }
+  
+  // Size Variants
+  &--sm {
+    .card__header,
+    .card__footer {
+      padding: $spacing-sm $spacing-md;
+    }
+    
+    .card__body {
+      padding: $spacing-md;
+    }
+    
+    .card__title {
+      font-size: $font-size-lg;
+    }
+  }
+  
+  &--lg {
+    .card__header,
+    .card__footer {
+      padding: $spacing-lg $spacing-xl;
+    }
+    
+    .card__body {
+      padding: $spacing-xl;
+    }
+  }
+}
+
+// ==========================================================================
+// Variant 1: Elevated Card (With Shadow)
+// ==========================================================================
+
+.card--elevated {
+  background-color: white;
+  box-shadow: $shadow-md;
+  border: none;
+  
+  &:hover {
+    box-shadow: $shadow-lg;
+    transform: translateY(-2px);
+  }
+  
+  // Primary Theme
+  &-primary {
+    .card__header {
+      background-color: $forest-frosted-mint;
+      border-bottom-color: $forest-celadon;
+    }
+    
+    .card__title {
+      color: $forest-hunter-green;
+    }
+    
+    .card__footer {
+      background-color: $forest-frosted-mint;
+      border-top-color: $forest-celadon;
+    }
+  }
+  
+  // Secondary Theme
+  &-secondary {
+    .card__header {
+      background-color: $forest-mint-leaf-dark;
+      border-bottom-color: $forest-sea-green;
+    }
+    
+    .card__title {
+      color: white;
+    }
+    
+    .card__subtitle {
+      color: $forest-celadon;
+    }
+    
+    .card__footer {
+      background-color: $forest-celadon;
+      border-top-color: $forest-celadon-dark;
+    }
+  }
+  
+  // Dark Theme
+  &-dark {
+    background-color: $forest-pine-teal;
+    color: $forest-frosted-mint;
+    
+    .card__header {
+      background-color: $forest-carbon-black;
+      border-bottom-color: $forest-hunter-green;
+    }
+    
+    .card__title {
+      color: $forest-mint-leaf;
+    }
+    
+    .card__subtitle {
+      color: $forest-celadon-dark;
+    }
+    
+    .card__footer {
+      background-color: $forest-carbon-black;
+      border-top-color: $forest-hunter-green;
+    }
+    
+    &:hover {
+      background-color: $forest-hunter-green;
+    }
+  }
+  
+  // Accent Theme
+  &-accent {
+    .card__header {
+      background-color: $forest-celadon;
+      border-bottom-color: $forest-celadon-dark;
+    }
+    
+    .card__title {
+      color: $forest-pine-teal;
+    }
+    
+    .card__body {
+      background-color: $forest-frosted-mint;
+    }
+    
+    .card__footer {
+      background-color: $forest-celadon;
+      border-top-color: $forest-celadon-dark;
+    }
+  }
+}
+
+// ==========================================================================
+// Variant 2: Outlined Card (Bordered)
+// ==========================================================================
+
+.card--outlined {
+  background-color: transparent;
+  box-shadow: none;
+  border: $border-width-thick solid $forest-celadon-dark;
+  
+  &:hover {
+    border-color: $forest-sea-green;
+  }
+  
+  // Primary Theme
+  &-primary {
+    border-color: $forest-hunter-green;
+    
+    .card__header {
+      border-bottom-color: $forest-hunter-green;
+    }
+    
+    .card__title {
+      color: $forest-hunter-green;
+    }
+    
+    .card__footer {
+      border-top-color: $forest-hunter-green;
+    }
+    
+    &:hover {
+      background-color: rgba($forest-hunter-green, 0.05);
+    }
+  }
+  
+  // Secondary Theme
+  &-secondary {
+    border-color: $forest-mint-leaf-dark;
+    
+    .card__header {
+      border-bottom-color: $forest-mint-leaf-dark;
+    }
+    
+    .card__title {
+      color: $forest-mint-leaf-dark;
+    }
+    
+    .card__footer {
+      border-top-color: $forest-mint-leaf-dark;
+    }
+    
+    &:hover {
+      background-color: rgba($forest-mint-leaf-dark, 0.1);
+    }
+  }
+  
+  // Dark Theme
+  &-dark {
+    border-color: $forest-carbon-black;
+    
+    .card__header {
+      border-bottom-color: $forest-carbon-black;
+    }
+    
+    .card__title {
+      color: $forest-carbon-black;
+    }
+    
+    .card__footer {
+      border-top-color: $forest-carbon-black;
+    }
+    
+    &:hover {
+      background-color: rgba($forest-carbon-black, 0.03);
+    }
+  }
+  
+  // Subtle Theme
+  &-subtle {
+    border-color: $forest-celadon;
+    
+    .card__header {
+      background-color: $forest-frosted-mint;
+      border-bottom-color: $forest-celadon;
+    }
+    
+    .card__title {
+      color: $forest-sea-green;
+    }
+    
+    .card__footer {
+      background-color: $forest-frosted-mint;
+      border-top-color: $forest-celadon;
+    }
+    
+    &:hover {
+      border-color: $forest-celadon-dark;
+      background-color: rgba($forest-frosted-mint, 0.5);
+    }
+  }
+}
+
+// ==========================================================================
+// Card Modifiers
+// ==========================================================================
+
+.card {
+  // Clickable Card
+  &--clickable {
+    cursor: pointer;
+    
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+  
+  // Horizontal Layout
+  &--horizontal {
+    flex-direction: row;
+    
+    .card__image {
+      width: 40%;
+      height: 100%;
+      
+      &--top {
+        border-radius: $border-radius-lg 0 0 $border-radius-lg;
+      }
+    }
+    
+    .card__content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  
+  // Full Width
+  &--full-width {
+    width: 100%;
+  }
+  
+  // Compact
+  &--compact {
+    .card__header,
+    .card__body,
+    .card__footer {
+      padding: $spacing-sm;
+    }
+  }
+}
