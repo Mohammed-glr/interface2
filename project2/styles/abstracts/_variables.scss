@@ -1,35 +1,35 @@
 // ==========================================================================
-// Forest Theme Color Variables
+// Rustic Charm theme Color Variables
 // ==========================================================================
 
-// Primary Forest Palette
-$forest-carbon-black: #000302;
-$forest-pine-teal: #00291B;
-$forest-hunter-green: #2d6a4f;
-$forest-sea-green: #40916c;
-$forest-mint-leaf-dark: #52b788;
-$forest-mint-leaf: #74c69d;
-$forest-celadon-dark: #95d5b2;
-$forest-celadon: #b7e4c7;
-$forest-frosted-mint: #d8f3dc;
+// Rustic Charm Palette
+$spicy-paprika: #eb5e28;
+$autumn-gold: #f4a261;
+$warm-sand: #e9c46a;
+$rustic-carbon-black: #252422;
+$charcoal-brown: #403d39;
+$soft-cream: #f4f1de;
+$earthy-brown: #283618;
+$silver:#ccc5b9;
+$floral-white: #fffcf2;
 
 // Semantic Color Mappings
-$color-primary: $forest-hunter-green;
-$color-primary-light: $forest-sea-green;
-$color-primary-dark: $forest-pine-teal;
+$color-primary: $spicy-paprika;
+$color-primary-light: $autumn-gold;
+$color-primary-dark: $warm-sand;
 
-$color-secondary: $forest-mint-leaf-dark;
-$color-secondary-light: $forest-mint-leaf;
-$color-secondary-dark: $forest-sea-green;
+$color-secondary: $rustic-carbon-black;
+$color-secondary-light: $charcoal-brown;
+$color-secondary-dark: $earthy-brown;
 
-$color-accent: $forest-celadon;
-$color-accent-light: $forest-frosted-mint;
-$color-accent-dark: $forest-celadon-dark;
+$color-accent: $soft-cream;
+$color-accent-light: $silver;
+$color-accent-dark: $floral-white;
 
-$color-background: $forest-frosted-mint;
-$color-surface: $forest-celadon;
-$color-text: $forest-carbon-black;
-$color-text-light: $forest-pine-teal;
+$color-background: $soft-cream;
+$color-surface: $silver;
+$color-text: $rustic-carbon-black;
+$color-text-light: $charcoal-brown;
 
 // ==========================================================================
 // Typography
@@ -81,10 +81,10 @@ $border-radius-full: 9999px;
 // Shadows
 // ==========================================================================
 
-$shadow-sm: 0 1px 2px 0 rgba($forest-carbon-black, 0.05);
-$shadow-md: 0 4px 6px -1px rgba($forest-carbon-black, 0.1), 0 2px 4px -1px rgba($forest-carbon-black, 0.06);
-$shadow-lg: 0 10px 15px -3px rgba($forest-carbon-black, 0.1), 0 4px 6px -2px rgba($forest-carbon-black, 0.05);
-$shadow-xl: 0 20px 25px -5px rgba($forest-carbon-black, 0.1), 0 10px 10px -5px rgba($forest-carbon-black, 0.04);
+$shadow-sm: 0 1px 2px 0 rgba($rustic-carbon-black, 0.05);
+$shadow-md: 0 4px 6px -1px rgba($rustic-carbon-black, 0.1), 0 2px 4px -1px rgba($rustic-carbon-black, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba($rustic-carbon-black, 0.1), 0 4px 6px -2px rgba($rustic-carbon-black, 0.05);
+$shadow-xl: 0 20px 25px -5px rgba($rustic-carbon-black, 0.1), 0 10px 10px -5px rgba($rustic-carbon-black, 0.04);
 
 // ==========================================================================
 // Transitions

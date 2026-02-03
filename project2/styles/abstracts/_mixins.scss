@@ -35,29 +35,13 @@
   flex-direction: column;
 }
 
-@mixin text-truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
 
-@mixin line-clamp($lines) {
-  display: -webkit-box;
-  -webkit-line-clamp: $lines;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
 
 @mixin focus-ring($color: $forest-mint-leaf-dark) {
   outline: none;
   box-shadow: 0 0 0 3px rgba($color, 0.4);
 }
 
-@mixin transition($properties...) {
-  transition-property: $properties;
-  transition-duration: 250ms;
-  transition-timing-function: ease-in-out;
-}
 
 @mixin button-reset {
   appearance: none;
@@ -70,34 +54,4 @@
   font-size: inherit;
 }
 
-@mixin input-reset {
-  appearance: none;
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  font-family: inherit;
-  font-size: inherit;
-  
-  &:focus {
-    outline: none;
-  }
-}
 
-@mixin card-base {
-  background-color: white;
-  border-radius: $border-radius-lg;
-  box-shadow: $shadow-md;
-}
-
-@mixin gradient-forest {
-  background: linear-gradient(135deg, $forest-hunter-green 0%, $forest-sea-green 100%);
-}
-
-@mixin gradient-mint {
-  background: linear-gradient(135deg, $forest-mint-leaf-dark 0%, $forest-mint-leaf 100%);
-}
-
-@mixin gradient-fresh {
-  background: linear-gradient(135deg, $forest-celadon-dark 0%, $forest-frosted-mint 100%);
-}

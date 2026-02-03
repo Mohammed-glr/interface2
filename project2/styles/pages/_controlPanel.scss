@@ -1,0 +1,76 @@
+@use '../abstracts' as *;
+
+
+.control-panel {
+  padding: $spacing-lg;
+  background-color: $color-background;
+  max-width: 960px;
+  height: 960px;
+    margin: 0 auto;
+    margin-top: $spacing-2xl;
+
+  @include respond-to('md') {
+    padding: $spacing-xl;
+  }
+
+  .control-panel__header {
+    @include flex-between;
+    margin-bottom: $spacing-md;
+
+    h2 {
+      font-size: clamp(1.5rem, 2vw, 2rem);
+      color: $color-primary-dark;
+
+    }
+}
+.control-panel__actions {
+    @include flex-center;
+  gap: $spacing-sm;
+  margin-top: $spacing-md;
+
+
+  &--arrows {
+    @include flex-column;
+    max-width: 300px;
+  }
+
+    &--arrows-up {
+        margin: 0 auto;
+        max-width: 100px;
+    }
+    &--arrows-bottom {
+        @include flex-center;
+        margin-top: $spacing-sm;
+        gap: $spacing-sm;
+    }
+
+    &--arrows-up {
+        transform: rotate(270deg);
+    }
+
+    &--arrows-left {
+        transform: rotate(180deg);
+    }
+
+    &--arrows-down {
+        transform: rotate(90deg);
+    }
+}
+
+.control-panel__content {
+  background-color: white;
+  border-radius: $border-radius-md;
+  padding: $spacing-md;
+  @include respond-to('md') {
+    padding: $spacing-lg;
+  }
+}
+
+.control-panel__image {
+  width: 100%;
+  height: auto;
+  border-radius: $border-radius-sm;
+}
+}
+
+

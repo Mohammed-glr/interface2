@@ -15,7 +15,8 @@
   font-size: $font-size-base;
   font-weight: $font-weight-medium;
   line-height: $line-height-base;
-  border-radius: $border-radius-md;
+  border-radius: $border-radius-lg;
+  corner-shape: superellipse(1.2);
   cursor: pointer;
   transition: all $transition-base;
   
@@ -31,7 +32,7 @@
   }
   
   &--lg {
-    padding: $spacing-md $spacing-lg;
+    padding: $spacing-2xl;
     font-size: $font-size-lg;
   }
   
@@ -59,178 +60,85 @@
 // ==========================================================================
 
 .btn--solid {
-  // Primary
   &-primary {
-    background-color: $forest-hunter-green;
+    background-color: $spicy-paprika;
     color: white;
-    border: $border-width-thick solid $forest-hunter-green;
+    border: $border-width-thick solid $spicy-paprika;
     
     &:hover:not(:disabled) {
-      background-color: $forest-sea-green;
-      border-color: $forest-sea-green;
+      background-color: $color-primary-dark;
+      border-color: $color-primary-dark;
     }
     
     &:active:not(:disabled) {
-      background-color: $forest-pine-teal;
-      border-color: $forest-pine-teal;
+      background-color: $color-primary-dark;
+      border-color: $color-primary-dark;
     }
     
     &:focus-visible {
-      @include focus-ring($forest-hunter-green);
+      @include focus-ring($color-primary);
     }
   }
   
-  // Secondary
   &-secondary {
-    background-color: $forest-mint-leaf-dark;
-    color: $forest-carbon-black;
-    border: $border-width-thick solid $forest-mint-leaf-dark;
+    background-color: $color-secondary-dark;
+    color: $color-secondary-dark;
+    border: $border-width-thick solid $color-secondary-dark;
     
     &:hover:not(:disabled) {
-      background-color: $forest-mint-leaf;
-      border-color: $forest-mint-leaf;
+      background-color: $color-accent-dark;
+      border-color: $color-accent-dark;
     }
     
     &:active:not(:disabled) {
-      background-color: $forest-sea-green;
-      border-color: $forest-sea-green;
+      background-color: $color-accent;
+      border-color: $color-accent;
       color: white;
     }
     
     &:focus-visible {
-      @include focus-ring($forest-mint-leaf-dark);
+      @include focus-ring($color-secondary-dark);
     }
   }
   
-  // Accent
   &-accent {
-    background-color: $forest-celadon;
-    color: $forest-pine-teal;
-    border: $border-width-thick solid $forest-celadon;
+    background-color: $color-accent;
+    color: $color-accent-dark;
+    border: $border-width-thick solid $color-accent;
     
     &:hover:not(:disabled) {
-      background-color: $forest-frosted-mint;
-      border-color: $forest-frosted-mint;
+      background-color: $color-accent-light;
+      border-color: $color-accent-light;
     }
     
     &:active:not(:disabled) {
-      background-color: $forest-celadon-dark;
-      border-color: $forest-celadon-dark;
+      background-color: $color-accent-dark;
+      border-color: $color-accent-dark;
     }
     
     &:focus-visible {
-      @include focus-ring($forest-celadon);
+      @include focus-ring($color-accent);
     }
   }
   
   // Dark
   &-dark {
-    background-color: $forest-carbon-black;
-    color: $forest-frosted-mint;
-    border: $border-width-thick solid $forest-carbon-black;
+    background-color: $color-secondary-dark;
+    color: $color-accent-light;
+    border: $border-width-thick solid $color-secondary-dark;
     
     &:hover:not(:disabled) {
-      background-color: $forest-pine-teal;
-      border-color: $forest-pine-teal;
+      background-color: $color-primary-dark;
+      border-color: $color-primary-dark;
     }
     
     &:active:not(:disabled) {
-      background-color: $forest-hunter-green;
-      border-color: $forest-hunter-green;
+      background-color: $color-primary;
+      border-color: $color-primary;
     }
     
     &:focus-visible {
-      @include focus-ring($forest-carbon-black);
-    }
-  }
-}
-
-// ==========================================================================
-// Variant 2: Outline Button (Ghost)
-// ==========================================================================
-
-.btn--outline {
-  background-color: transparent;
-  
-  // Primary
-  &-primary {
-    color: $forest-hunter-green;
-    border: $border-width-thick solid $forest-hunter-green;
-    
-    &:hover:not(:disabled) {
-      background-color: $forest-hunter-green;
-      color: white;
-    }
-    
-    &:active:not(:disabled) {
-      background-color: $forest-pine-teal;
-      border-color: $forest-pine-teal;
-      color: white;
-    }
-    
-    &:focus-visible {
-      @include focus-ring($forest-hunter-green);
-    }
-  }
-  
-  // Secondary
-  &-secondary {
-    color: $forest-mint-leaf-dark;
-    border: $border-width-thick solid $forest-mint-leaf-dark;
-    
-    &:hover:not(:disabled) {
-      background-color: $forest-mint-leaf-dark;
-      color: $forest-carbon-black;
-    }
-    
-    &:active:not(:disabled) {
-      background-color: $forest-sea-green;
-      border-color: $forest-sea-green;
-      color: white;
-    }
-    
-    &:focus-visible {
-      @include focus-ring($forest-mint-leaf-dark);
-    }
-  }
-  
-  // Accent
-  &-accent {
-    color: $forest-celadon-dark;
-    border: $border-width-thick solid $forest-celadon-dark;
-    
-    &:hover:not(:disabled) {
-      background-color: $forest-celadon-dark;
-      color: $forest-pine-teal;
-    }
-    
-    &:active:not(:disabled) {
-      background-color: $forest-celadon;
-      border-color: $forest-celadon;
-    }
-    
-    &:focus-visible {
-      @include focus-ring($forest-celadon-dark);
-    }
-  }
-  
-  // Dark
-  &-dark {
-    color: $forest-carbon-black;
-    border: $border-width-thick solid $forest-carbon-black;
-    
-    &:hover:not(:disabled) {
-      background-color: $forest-carbon-black;
-      color: $forest-frosted-mint;
-    }
-    
-    &:active:not(:disabled) {
-      background-color: $forest-pine-teal;
-      border-color: $forest-pine-teal;
-    }
-    
-    &:focus-visible {
-      @include focus-ring($forest-carbon-black);
+      @include focus-ring($color-secondary-dark);
     }
   }
 }
