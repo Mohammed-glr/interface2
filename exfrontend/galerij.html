@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Galerij — Muurschilderingen van Jimmy Dvate</title>
+	<meta name="description" content="Bekijk de galerij met muurschilderingen van Jimmy Dvate: silo-beschilderingen, flora en fauna kunstwerken in Australië.">
+	<meta name="keywords" content="galerij, muurschilderingen, Jimmy Dvate, silo art, street art, Australië, Rochester, Waikerie">
+	<meta name="author" content="Jimmy Dvate">
+	<meta name="robots" content="index, follow">
+	<meta property="og:title" content="Galerij — Muurschilderingen van Jimmy Dvate">
+	<meta property="og:description" content="Een selectie van indrukwekkende muurschilderingen door Jimmy Dvate.">
+	<meta property="og:type" content="website">
+	<meta property="og:locale" content="nl_NL">
+	<link rel="canonical" href="https://jimmydvate.nl/galerij.html">
+	<link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body class="page">
+
+	<nav class="navbar" role="navigation" aria-label="Hoofdnavigatie">
+		<a class="navbar__logo" href="index.html" aria-label="Jimmy Dvate — Home">JD</a>
+		<button class="navbar__toggle" id="navToggle" aria-label="Menu">
+			<span class="navbar__toggle-bar"></span>
+			<span class="navbar__toggle-bar"></span>
+			<span class="navbar__toggle-bar"></span>
+		</button>
+		<div class="navbar__links" id="navLinks">
+			<a class="navbar__link" href="index.html">Over Mij</a>
+			<a class="navbar__link navbar__link--active" href="galerij.html">Galerij</a>
+			<a class="navbar__link" href="contact.html">Contact</a>
+		</div>
+	</nav>
+
+	<main>
+		<header class="page-header">
+			<h1 class="page-header__title">Galerij</h1>
+			<p class="page-header__subtitle">Een selectie van mijn muurschilderingen</p>
+		</header>
+
+		<section class="slider" aria-label="Afbeeldingenslider">
+			<div class="slider__container">
+				<button class="slider__btn slider__btn--prev" id="prevBtn" aria-label="Vorige afbeelding">&#8592;</button>
+
+				<div class="slider__viewport">
+					<div class="slider__track" id="sliderTrack">
+						<figure class="slider__slide">
+							<img class="slider__image" src="./images/foto1.jpg" alt="Muurschildering op graansilo in Rochester, Australië door Jimmy Dvate" width="1000" height="625" loading="eager"/>
+							<figcaption class="slider__caption">Silo beschildering in Rochester</figcaption>
+						</figure>
+						<figure class="slider__slide">
+							<img class="slider__image" src="./images/foto2.jpg" alt="Muurschildering van een vogelbekdier op een graansilo door Jimmy Dvate" width="1000" height="625" loading="lazy"/>
+							<figcaption class="slider__caption">Silo met vogelbekdier</figcaption>
+						</figure>
+						<figure class="slider__slide">
+							<img class="slider__image" src="./images/foto3.jpg" alt="Muurschildering van een landschap met witte reiger door Jimmy Dvate" width="1000" height="625" loading="lazy"/>
+							<figcaption class="slider__caption">Landschap met witte reiger</figcaption>
+						</figure>
+						<figure class="slider__slide">
+							<img class="slider__image" src="./images/foto4.jpg" alt="Muurschildering in Waikerie bij de Murray River door Jimmy Dvate" width="1000" height="625" loading="lazy"/>
+							<figcaption class="slider__caption">Waikerie bij de Murray River</figcaption>
+						</figure>
+					</div>
+				</div>
+
+				<button class="slider__btn slider__btn--next" id="nextBtn" aria-label="Volgende afbeelding">&#8594;</button>
+			</div>
+
+			<div class="slider__counter" id="sliderCounter" aria-live="polite">1 / 4</div>
+		</section>
+	</main>
+
+	<script src="./scripts/script.js" defer></script>
+</body>
+</html>
